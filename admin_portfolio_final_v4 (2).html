@@ -1,0 +1,333 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Yassir Kniksi | Portfolio Admin</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><style>
+:root{--bg:#0b1020;--p:#11182b;--p2:#182238;--t:#eef3ff;--m:#9aa8c3;--l:#26324b;--a:#7c9cff;--d:#ef6464;--ok:#49c78a}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font-family:Inter,system-ui,Arial}.hidden{display:none!important}button,input,textarea,select{font:inherit}button{cursor:pointer}.login{min-height:100vh;display:grid;place-items:center;padding:20px}.card{background:var(--p);border:1px solid var(--l);border-radius:18px;padding:22px}.login .card{width:min(430px,100%)}h1,h2{margin:0 0 8px}.muted{color:var(--m);font-size:13px;line-height:1.5}.field{margin:10px 0}.field label{display:block;color:var(--m);font-size:12px;font-weight:700;margin-bottom:5px}.field input,.field textarea,.field select{width:100%;padding:10px 11px;border:1px solid var(--l);border-radius:9px;background:var(--p2);color:var(--t)}.field textarea{min-height:100px;resize:vertical}.btn{padding:9px 13px;border-radius:9px;border:1px solid var(--l);background:var(--p2);color:var(--t);font-weight:700}.primary{background:var(--a);color:#081022;border-color:var(--a)}.danger{border-color:var(--d);color:#ff9a9a}.top{height:72px;padding:14px 22px;border-bottom:1px solid var(--l);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:#0b1020ee;backdrop-filter:blur(12px);z-index:5}.brand small{color:var(--a);font-size:10px;letter-spacing:.15em}.brand h1{font-size:19px}.layout{display:grid;grid-template-columns:210px 1fr;min-height:calc(100vh - 72px)}aside{padding:15px;border-right:1px solid var(--l);position:sticky;top:72px;height:calc(100vh - 72px)}.nav{width:100%;display:block;text-align:left;border:1px solid transparent;background:none;color:var(--m);padding:10px;border-radius:9px;margin:4px 0;font-weight:700}.nav.active,.nav:hover{background:var(--p);border-color:var(--l);color:var(--t)}main{padding:24px;max-width:1200px;width:100%}.section{display:none}.section.active{display:block}.head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:16px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}.list{display:grid;gap:10px;margin-top:12px}.item{background:var(--p);border:1px solid var(--l);border-radius:13px;padding:14px;display:flex;justify-content:space-between;gap:12px}.meta{color:var(--m);font-size:12px;margin-top:4px}.actions{display:flex;gap:7px;flex-wrap:wrap}.status{font-size:12px;margin-top:9px;min-height:17px}.err{color:var(--d)}.ok{color:var(--ok)}.empty{text-align:center;padding:22px;border:1px dashed var(--l);border-radius:13px;color:var(--m)}.item-thumb{width:58px;height:58px;object-fit:cover;border-radius:14px;border:1px solid var(--line);background:var(--p2);flex:0 0 58px}.item-main{flex:1;min-width:0}
+@media(max-width:760px){.layout{display:block}aside{height:auto;position:static;display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--l)}.nav{white-space:nowrap;width:auto}.grid{grid-template-columns:1fr}main{padding:16px}.item{flex-direction:column}.top{padding:12px 15px}}
+
+/* ===== Modern Admin UI ===== */
+:root{
+  --bg:#08111f;--bg2:#0d1728;--p:rgba(17,27,45,.88);--p2:#15223a;
+  --t:#f4f7ff;--m:#9eacc5;--l:rgba(148,163,184,.18);
+  --a:#7c9cff;--a2:#55d6ff;--d:#ef6464;--ok:#49c78a;
+  --shadow:0 18px 60px rgba(0,0,0,.28);
+}
+body.light{
+  --bg:#f4f7fb;--bg2:#eaf0f8;--p:rgba(255,255,255,.92);--p2:#f0f4fa;
+  --t:#172033;--m:#64748b;--l:rgba(71,85,105,.16);
+  --a:#4f67e8;--a2:#0891b2;--shadow:0 18px 50px rgba(71,85,105,.15);
+}
+body{
+  background:
+    radial-gradient(circle at 10% 10%,rgba(124,156,255,.13),transparent 28%),
+    radial-gradient(circle at 90% 20%,rgba(85,214,255,.10),transparent 25%),
+    var(--bg);
+  transition:background .35s,color .35s;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;opacity:.25;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:32px 32px;
+  mask-image:linear-gradient(to bottom,black,transparent 80%);
+}
+.top{box-shadow:0 1px 0 var(--l),0 8px 35px rgba(0,0,0,.08);background:color-mix(in srgb,var(--bg) 82%,transparent)}
+.brand h1{letter-spacing:-.03em}
+.brand small{background:linear-gradient(90deg,var(--a),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+aside{background:color-mix(in srgb,var(--bg2) 78%,transparent);backdrop-filter:blur(16px)}
+.nav{transition:transform .2s,background .2s,border-color .2s,color .2s;position:relative;overflow:hidden}
+.nav::after{content:"";position:absolute;left:0;top:20%;bottom:20%;width:3px;border-radius:4px;background:linear-gradient(var(--a),var(--a2));transform:scaleY(0);transition:transform .2s}
+.nav.active{box-shadow:0 8px 24px rgba(0,0,0,.10);transform:translateX(2px)}
+.nav.active::after{transform:scaleY(1)}
+.nav:hover{transform:translateX(4px)}
+.card,.item{box-shadow:var(--shadow);backdrop-filter:blur(12px);transition:transform .22s,box-shadow .22s,border-color .22s}
+.item:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--a) 45%,var(--l))}
+.btn{transition:transform .18s,box-shadow .18s,filter .18s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(0,0,0,.16);filter:brightness(1.05)}
+.primary{background:linear-gradient(135deg,var(--a),var(--a2));border:0}
+input,textarea,select{transition:border-color .2s,box-shadow .2s,background .2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--a);box-shadow:0 0 0 3px color-mix(in srgb,var(--a) 20%,transparent)}
+.section.active{animation:sectionIn .3s ease both}
+@keyframes sectionIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.float-orb{position:fixed;border-radius:50%;filter:blur(1px);pointer-events:none;z-index:-1;opacity:.28;animation:float 8s ease-in-out infinite}
+.orb1{width:170px;height:170px;right:7%;top:18%;background:var(--a);animation-delay:-2s}
+.orb2{width:110px;height:110px;left:18%;bottom:10%;background:var(--a2);animation-delay:-5s}
+@keyframes float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-22px,0)}}
+.theme-btn{min-width:42px}
+.login .card{box-shadow:0 30px 90px rgba(0,0,0,.25);animation:loginIn .45s ease both}
+@keyframes loginIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.item-thumb{width:58px;height:58px;object-fit:cover;border-radius:14px;border:1px solid var(--line);background:var(--p2);flex:0 0 58px}.item-main{flex:1;min-width:0}
+@media(max-width:760px){aside{background:var(--bg2)}.nav:hover{transform:none}}
+
+/* ===== Unified Visitor / Admin Theme ===== */
+:root{
+  --bg:#0a0f18;--bg2:#15152a;--p:rgba(25,30,48,.82);--p2:#20253b;
+  --t:#f5f7fb;--m:#aeb7c9;--l:rgba(255,255,255,.10);
+  --a:#6ee7f9;--a2:#b69cff;--a3:#f6c177;--ok:#67e8b0;--d:#ef6464;
+  --shadow:0 26px 90px rgba(2,5,14,.42);
+}
+body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:
+ radial-gradient(700px 450px at 8% 8%,rgba(110,231,249,.14),transparent 65%),
+ radial-gradient(650px 450px at 90% 18%,rgba(182,156,255,.16),transparent 65%),
+ radial-gradient(520px 360px at 55% 88%,rgba(246,193,119,.07),transparent 70%),
+ linear-gradient(145deg,var(--bg),var(--bg2));}
+.top{height:76px;padding:14px 28px;background:rgba(10,15,24,.78);backdrop-filter:blur(18px);border-bottom:1px solid var(--l);box-shadow:0 8px 35px rgba(0,0,0,.08)}
+.brand h1{font-size:21px;letter-spacing:-.03em}.brand small{letter-spacing:.2em;background:linear-gradient(90deg,var(--a),var(--a2));-webkit-background-clip:text;background-clip:text;color:transparent}
+aside{width:235px;padding:20px 14px;background:rgba(13,23,40,.62);backdrop-filter:blur(18px);border-right:1px solid var(--l)}
+.layout{grid-template-columns:235px 1fr;min-height:calc(100vh - 76px)}
+.nav{padding:12px 14px;border-radius:13px;margin:5px 0;transition:.2s;position:relative;overflow:hidden}.nav:hover{transform:translateX(4px)}
+.nav.active{background:linear-gradient(90deg,rgba(110,231,249,.12),rgba(182,156,255,.09));border-color:rgba(110,231,249,.22);color:var(--t);box-shadow:0 8px 24px rgba(0,0,0,.10)}
+main{padding:34px;max-width:1250px}.section.active{animation:adminIn .35s ease both}@keyframes adminIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card,.item{border-radius:24px;background:var(--p);border:1px solid var(--l);box-shadow:var(--shadow);backdrop-filter:blur(14px);transition:transform .22s,box-shadow .22s,border-color .22s}.item{padding:18px}.item:hover{transform:translateY(-3px);border-color:rgba(110,231,249,.38)}
+.head h2{font-size:clamp(30px,4vw,46px);letter-spacing:-.04em}.head .muted{max-width:620px}.btn{border-radius:12px;padding:10px 14px;transition:.2s}.btn:hover{transform:translateY(-1px);box-shadow:0 8px 22px rgba(0,0,0,.16)}
+.primary{background:linear-gradient(135deg,var(--a),var(--a2));color:#fff;border:0;box-shadow:0 10px 30px rgba(110,231,249,.18)}
+.field input,.field textarea,.field select{border-radius:12px;padding:12px 14px;background:rgba(32,37,59,.82);border-color:var(--l)}
+.field input[type=file]{padding:10px}.upload-box{border:1px dashed rgba(110,231,249,.38);border-radius:15px;padding:12px;background:rgba(110,231,249,.035)}
+.upload-preview{display:flex;align-items:center;gap:12px;margin-top:8px}.upload-preview img{width:58px;height:58px;border-radius:12px;object-fit:cover;border:1px solid var(--l);background:var(--p2)}
+.upload-help{font-size:11px;color:var(--m);margin-top:5px}.admin-tip{padding:14px 16px;border:1px solid rgba(110,231,249,.20);background:rgba(110,231,249,.05);border-radius:16px;color:var(--m);font-size:12px;margin-bottom:18px}
+.item-thumb{width:58px;height:58px;object-fit:cover;border-radius:14px;border:1px solid var(--l);background:var(--p2);flex:0 0 58px}.item-main{flex:1;min-width:0}
+.float-orb{position:fixed;border-radius:50%;filter:blur(1px);pointer-events:none;z-index:-1;opacity:.22;animation:float 8s ease-in-out infinite}.orb1{width:170px;height:170px;right:7%;top:18%;background:var(--a);animation-delay:-2s}.orb2{width:110px;height:110px;left:18%;bottom:10%;background:var(--a2);animation-delay:-5s}@keyframes float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(0,-22px,0)}}
+/* Exact light counterpart of the visitor theme */
+body.light{--bg:#eef1f5;--bg2:#f4efe8;--p:rgba(255,255,255,.84);--p2:#fbf8f2;--t:#182033;--m:#657086;--l:rgba(24,32,51,.11);--a:#3157d5;--a2:#7b4fd3;--a3:#d88335;--ok:#168a68;--shadow:0 24px 70px rgba(58,66,88,.14);background:
+ radial-gradient(700px 450px at 8% 8%,rgba(49,87,213,.10),transparent 65%),
+ radial-gradient(650px 450px at 90% 18%,rgba(123,79,211,.10),transparent 65%),
+ radial-gradient(520px 360px at 55% 88%,rgba(216,131,53,.06),transparent 70%),
+ linear-gradient(145deg,var(--bg),var(--bg2));color:var(--t)}
+body.light .top{background:rgba(255,255,255,.78);border-bottom-color:var(--l);box-shadow:0 8px 30px rgba(58,66,88,.08)}
+body.light aside{background:rgba(248,250,253,.82);border-right-color:var(--l)}
+body.light .card,body.light .item{background:var(--p);border-color:var(--l);box-shadow:var(--shadow)}
+body.light .field input,body.light .field textarea,body.light .field select{background:#fff;color:var(--t);border-color:var(--l)}
+body.light .field input::placeholder,body.light .field textarea::placeholder{color:#8a96a8}
+body.light .btn{background:#fff;color:#263247;border-color:var(--l)}
+body.light .primary{background:linear-gradient(135deg,var(--a),var(--a2));color:#fff;border-color:transparent}
+body.light .nav{color:#68758a}body.light .nav.active,body.light .nav:hover{color:var(--t);background:linear-gradient(90deg,rgba(49,87,213,.10),rgba(123,79,211,.08));border-color:rgba(49,87,213,.16)}
+body.light .upload-box{background:rgba(49,87,213,.035);border-color:rgba(49,87,213,.28)}body.light .admin-tip{background:rgba(49,87,213,.045);border-color:rgba(49,87,213,.16);color:#64748b}body.light .empty{background:rgba(255,255,255,.65);border-color:var(--l)}
+@media(max-width:760px){.layout{grid-template-columns:1fr}aside{width:auto}.top{padding:12px 16px}main{padding:20px}.nav{padding:10px 12px}.nav:hover{transform:none}}
+
+/* Skills bulk builder */
+.skills-builder{display:none;margin-bottom:18px}
+.skills-builder.open{display:block}
+.skills-builder-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:16px}
+.skills-builder-head h3{margin:0 0 5px;font-size:20px}
+.skills-builder-head p{margin:0;color:var(--m);font-size:13px}
+.skills-categories{display:grid;grid-template-columns:1fr;gap:18px}
+.skill-category-card{background:linear-gradient(135deg,var(--p),var(--p2));border:1px solid var(--l);border-radius:24px;padding:22px;box-shadow:0 14px 38px #00000012;position:relative;overflow:hidden}
+.skill-category-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(var(--a),#a78bfa)}
+.skill-category-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}
+.skill-category-top strong{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--a)}
+.skill-category-name{width:100%;padding:15px 16px;border:1px solid var(--l);border-radius:14px;background:var(--p2);color:var(--t);font-weight:800;font-size:21px;outline:none;margin-bottom:16px}
+.skill-section-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--m);font-weight:800;margin:2px 0 9px}.skill-rows{display:grid;gap:9px}
+.skill-row{display:flex;gap:8px;align-items:center}
+.skill-row input{flex:1;padding:10px 11px;border:1px solid var(--l);border-radius:9px;background:var(--p2);color:var(--t)}
+.skill-row button{width:38px;height:38px;border:1px solid var(--l);border-radius:9px;background:var(--p2);color:var(--t);font-size:16px;font-weight:800}.skill-row .skill-delete{color:var(--d)}.skill-order-buttons{display:flex;gap:5px}.skill-order-buttons button{color:var(--a);font-size:15px}.skill-order-buttons button:disabled{opacity:.35;cursor:not-allowed}
+.skill-add{margin-top:10px;width:100%;padding:9px;border:1px dashed var(--a);border-radius:9px;background:transparent;color:var(--a);font-weight:800}
+.skills-builder-actions{display:flex;justify-content:space-between;gap:10px;margin-top:16px}
+.skill-save-status{min-height:20px;margin-top:9px}
+@media(max-width:800px){.skills-categories{grid-template-columns:1fr}.skills-builder-head{flex-direction:column}.skills-builder-actions{flex-direction:column}.skills-builder-actions button{width:100%}}
+</style></head><body><div class="float-orb orb1"></div><div class="float-orb orb2"></div>
+<div id="login" class="login"><div class="card"><h1>🔐 Portfolio Admin</h1><p class="muted">Connecte-toi avec ton compte Supabase.</p><div class="field"><label>Email</label><input id="email" type="email"></div><div class="field"><label>Mot de passe</label><input id="password" type="password"></div><button id="loginBtn" class="btn primary" style="width:100%">Se connecter</button><div id="loginMsg" class="status"></div><small class="muted">Les fichiers sont envoyés dans le bucket Supabase <strong>portfolio-assets</strong> (à créer une seule fois).</small></div></div>
+<div id="app" class="hidden"><header class="top"><div class="brand"><small>ADMINISTRATION</small><h1>Yassir Kniksi Portfolio</h1></div><div class="actions"><span id="who" class="muted"></span><button id="themeBtn" class="btn theme-btn" title="Changer le thème">☀️</button><button id="logout" class="btn">Déconnexion</button></div></header><div class="layout"><aside>
+<button class="nav active" data-s="profile">👤 Profile</button><button class="nav" data-s="skills">🛠️ Skills</button><button class="nav" data-s="experiences">💼 Experience</button><button class="nav" data-s="projects">📁 Projects</button><button class="nav" data-s="education">🎓 Education</button><button class="nav" data-s="certificates">📜 Certificates</button><button class="nav" data-s="contact">📞 Contact</button><button class="nav" data-s="services">🧩 Services</button>
+</aside><main>
+<section id="profile" class="section active"><div class="admin-tip">💡 <strong>Modification simple :</strong> ajoute ou modifie une information ici, puis clique sur <strong>Enregistrer</strong>. Pour les images, utilise <strong>Importer</strong> : elles seront stockées dans Supabase et visibles sur le portfolio.</div><div class="head"><div><h2>Profile</h2><p class="muted">Informations principales.</p></div></div><div class="card"><form id="profileForm" class="grid"></form><div id="profileMsg" class="status"></div></div></section>
+<section id="skills" class="section"><div class="head"><div><h2>Skills</h2><p class="muted">Ajoute plusieurs compétences en une seule fois, organisées par catégorie.</p></div><button class="btn primary" onclick="openSkillsBuilder()">+ Ajouter plusieurs skills</button></div><div id="skillsBuilder" class="skills-builder"><div class="card"><div class="skills-builder-head"><div><h3>Ajouter plusieurs skills</h3><p>Crée une catégorie, ajoute ses compétences, puis utilise <strong>↑</strong> et <strong>↓</strong> pour définir leur ordre.</p></div><button type="button" class="btn" onclick="closeSkillsBuilder()">Fermer</button></div><div id="skillsCategories" class="skills-categories"></div><div class="skills-builder-actions"><button type="button" class="btn" onclick="addSkillCategory()">＋ Ajouter une autre catégorie</button><button type="button" class="btn primary" onclick="saveSkillsBuilder()">Enregistrer tous les skills</button></div><div id="skillsBulkMsg" class="status skill-save-status"></div></div></div><div id="skillsForm"></div><div id="skillsList" class="list"></div></section>
+<section id="experiences" class="section"><div class="head"><div><h2>Experience</h2><p class="muted">Expériences professionnelles.</p></div><button class="btn primary" onclick="openForm('experiences')">+ Ajouter</button></div><div id="experiencesForm"></div><div id="experiencesList" class="list"></div></section>
+<section id="projects" class="section"><div class="head"><div><h2>Projects</h2><p class="muted">Projets du portfolio.</p></div><button class="btn primary" onclick="openForm('projects')">+ Ajouter</button></div><div id="projectsForm"></div><div id="projectsList" class="list"></div></section>
+<section id="education" class="section"><div class="head"><div><h2>Education</h2><p class="muted">Formations et diplômes.</p></div><button class="btn primary" onclick="openForm('education')">+ Ajouter</button></div><div id="educationForm"></div><div id="educationList" class="list"></div></section>
+<section id="certificates" class="section"><div class="head"><div><h2>Certificates</h2><p class="muted">Certifications.</p></div><button class="btn primary" onclick="openForm('certificates')">+ Ajouter</button></div><div id="certificatesForm"></div><div id="certificatesList" class="list"></div></section>
+<section id="contact" class="section"><div class="head"><div><h2>Contact</h2><p class="muted">Informations de contact.</p></div></div><div class="card"><form id="contactForm" class="grid"></form><div id="contactMsg" class="status"></div></div></section>
+<section id="services" class="section"><div class="head"><div><h2>Services</h2><p class="muted">Services proposés.</p></div><button class="btn primary" onclick="openForm('services')">+ Ajouter</button></div><div id="servicesForm"></div><div id="servicesList" class="list"></div></section>
+</main></div></div>
+<script>
+const SUPABASE_URL = 'https://hoznruaicisrrjwyuxbo.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_Vw6DbHDXyl4RQz40vAiOsA_salxZJ1e';
+const STORAGE_BUCKET = 'portfolio-assets';
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const C={skills:{f:[['name','Nom','text',1],['category','Catégorie','text'],['icon_url','URL icône','url'],['description','Description','textarea'],['sort_order','Ordre','number']],t:r=>r.name,m:r=>[r.category].filter(Boolean).join(' · ')},experiences:{f:[['job_title','Poste','text',1],['company','Entreprise','text'],['location','Lieu','text'],['description','Description','textarea'],['start_date','Date début','date'],['end_date','Date fin','date'],['is_current','Poste actuel','checkbox'],['company_url','URL entreprise','url'],['company_logo_url','URL logo','url'],['company_logo_file','Importer le logo','file'],['sort_order','Ordre','number']],t:r=>r.job_title,m:r=>[r.company,r.location].filter(Boolean).join(' · ')},projects:{f:[['title','Titre','text',1],['description','Description','textarea'],['category','Catégorie','text'],['technologies','Technologies (virgules)','text'],['image_url','URL image','url'],['image_file','Importer une image','file'],['project_url','URL projet','url']],t:r=>r.title,m:r=>[r.category,r.technologies].filter(Boolean).join(' · ')},education:{f:[['degree','Diplôme','text',1],['field_of_study','Domaine','text'],['institution','Établissement','text'],['location','Lieu','text'],['description','Description','textarea'],['start_date','Date début','date'],['end_date','Date fin','date'],['institution_url','URL','url'],['logo_url','URL logo','url'],['logo_file','Importer le logo','file'],['sort_order','Ordre','number']],t:r=>r.degree,m:r=>[r.institution,r.field_of_study].filter(Boolean).join(' · ')},certificates:{f:[['title','Titre','text',1],['issuer','Organisme','text'],['description','Description','textarea'],['issue_date','Date obtention','date'],['expiration_date','Expiration','date'],['credential_id','ID certificat','text'],['credential_url','URL vérification','url'],['certificate_url','URL certificat/document','url'],['certificate_file','Importer l’image du certificat','file'],['logo_url','URL logo organisme','url'],['logo_file','Importer le logo organisme','file'],['sort_order','Ordre','number']],t:r=>r.title,m:r=>[r.issuer,r.issue_date].filter(Boolean).join(' · ')},services:{f:[['title','Titre','text',1],['description','Description','textarea'],['icon','Icône','text'],['sort_order','Ordre','number']],t:r=>r.title,m:r=>r.description||''}};
+const PF=[['full_name','Nom complet','text'],['job_title','Titre professionnel','text'],['bio','Bio','textarea'],['profile_image_url','URL photo','url'],['profile_image_file','Importer une photo','file'],['cv_url','URL CV','url'],['cv_file','Importer le CV','file'],['email','Email','email'],['phone','Téléphone','text'],['location','Localisation','text'],['github_url','GitHub','url'],['linkedin_url','LinkedIn','url'],['website_url','Site web','url']],CF=[['email','Email','email'],['phone','Téléphone','text'],['location','Localisation','text'],['availability','Disponibilité','text'],['linkedin_url','LinkedIn','url'],['github_url','GitHub','url'],['twitter_url','Twitter/X','url'],['instagram_url','Instagram','url']];let rows={};
+function esc(v){return String(v??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]))}function msg(id,s,ok=false){let e=document.getElementById(id);e.textContent=s;e.className='status '+(ok?'ok':'err');setTimeout(()=>e.textContent='',3500)}function input(f,v=''){let[n,l,t,req]=f;if(t==='textarea')return `<div class="field full"><label>${l}</label><textarea name="${n}" ${req?'required':''}>${esc(v)}</textarea></div>`;if(t==='checkbox')return `<div class="field"><label><input type="checkbox" name="${n}" ${v?'checked':''}> ${l}</label></div>`;if(t==='file')return `<div class="field full upload-box"><label>${l}</label><input name="${n}" type="file" accept="image/*,.pdf" data-upload-target="${n}"><div class="upload-preview" id="preview_${n}"></div><div class="upload-help">Choisis un fichier depuis ton ordinateur. Il sera envoyé dans Supabase Storage → <strong>portfolio-assets</strong>.</div></div>`;return `<div class="field"><label>${l}</label><input name="${n}" type="${t}" value="${esc(v)}" ${req?'required':''}></div>`}
+function vals(form,fields){let o={};fields.forEach(([n])=>{let e=form.elements[n];if(!e||e.type==='file')return;o[n]=e.type==='checkbox'?e.checked:e.value;if(e.type==='number'&&e.value!=='')o[n]=Number(e.value)});return o}
+const UPLOAD_MAP={profile_image_file:'profile_image_url',cv_file:'cv_url',image_file:'image_url',company_logo_file:'company_logo_url',certificate_file:'certificate_url',logo_file:'logo_url'};
+async function uploadFiles(form,table){const out={};for(const fileField of Object.keys(UPLOAD_MAP)){const input=form.elements[fileField];if(!input||!input.files?.[0])continue;const file=input.files[0];if(fileField==='certificate_file' && !file.type.startsWith('image/'))throw new Error('Pour l’image du certificat, choisis une image JPG, PNG ou WebP.');if(file.size>8*1024*1024)throw new Error('Fichier trop volumineux (maximum 8 MB).');const ext=(file.name.split('.').pop()||'bin').toLowerCase();const path=`${table}/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;const up=await db.storage.from(STORAGE_BUCKET).upload(path,file,{upsert:true,contentType:file.type||'application/octet-stream'});if(up.error){if(/bucket not found/i.test(up.error.message||''))throw new Error('Le bucket Supabase « '+STORAGE_BUCKET+' » n’existe pas encore. Crée-le dans Storage avec ce nom exact, puis réessaie.');throw new Error('Upload impossible : '+up.error.message)}const pub=db.storage.from(STORAGE_BUCKET).getPublicUrl(path);out[UPLOAD_MAP[fileField]]=pub.data.publicUrl;const preview=document.getElementById('preview_'+fileField);if(preview)preview.innerHTML=`<span class="ok">✓ ${esc(file.name)}</span>`;}return out}
+function bindFilePreviews(root=document){root.querySelectorAll('input[type=file]').forEach(input=>input.addEventListener('change',()=>{const f=input.files?.[0],box=document.getElementById('preview_'+input.name);if(!box||!f)return;box.innerHTML='';if(f.type.startsWith('image/')){const img=document.createElement('img');img.src=URL.createObjectURL(f);box.appendChild(img)}const span=document.createElement('span');span.textContent=f.name;span.className='meta';box.appendChild(span)}));}
+
+async function load(t){
+  const list=document.getElementById(t+'List');
+  if(list) list.innerHTML='<div class="empty">Chargement...</div>';
+  const q=await db.from(t).select('*');
+  if(q.error){
+    const detail=[q.error.message,q.error.code,q.error.details].filter(Boolean).join(' · ');
+    if(list) list.innerHTML='<div class="empty err"><strong>Erreur '+esc(t)+'</strong><br>'+esc(detail)+'</div>';
+    console.error('Table load error ['+t+']:',q.error);
+    return false;
+  }
+  rows[t]=q.data||[];
+  rows[t].sort((a,b)=>{
+    const sa=a.sort_order==null?0:Number(a.sort_order)||0;
+    const sb=b.sort_order==null?0:Number(b.sort_order)||0;
+    if(sa!==sb) return sa-sb;
+    return String(b.created_at||'').localeCompare(String(a.created_at||''));
+  });
+  const c=C[t];
+  if(!list) return true;
+  list.innerHTML=rows[t].length?rows[t].map(r=>{const img=t==='projects'?r.image_url:(t==='certificates'?r.certificate_url:(t==='profile'?r.profile_image_url:(t==='experiences'?r.company_logo_url:(t==='education'?r.logo_url:''))));const thumb=img?`<img class="item-thumb" src="${esc(img)}" alt="" onerror="this.style.display='none'">`:'';return `<div class="item">${thumb}<div class="item-main"><strong>${esc(c.t(r))}</strong><div class="meta">${esc(c.m(r))}</div></div><div class="actions"><button class="btn" onclick="openForm('${t}',${r.id})">Modifier</button><button class="btn danger" onclick="del('${t}',${r.id})">Supprimer</button></div></div>`}).join(''):'<div class="empty">Aucune donnée.</div>';
+  return true;
+}
+let skillCategoryCount=0;
+function skillEsc(v){return String(v??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]))}
+function openSkillsBuilder(){
+  const b=document.getElementById('skillsBuilder');
+  b.classList.add('open');
+  document.getElementById('skillsBulkMsg').textContent='';
+  const wrap=document.getElementById('skillsCategories');
+  if(!wrap.children.length){skillCategoryCount=0;addSkillCategory();}
+  b.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function closeSkillsBuilder(){document.getElementById('skillsBuilder').classList.remove('open');}
+function addSkillCategory(){
+  const wrap=document.getElementById('skillsCategories');
+  const index=++skillCategoryCount;
+  const card=document.createElement('div');
+  card.className='skill-category-card';
+  card.dataset.category=index;
+  card.innerHTML=`<div class="skill-category-top"><strong>Section Skills ${index}</strong><button type="button" class="btn danger" onclick="this.closest('.skill-category-card').remove()">Supprimer</button></div><input class="skill-category-name" type="text" placeholder="Grand titre — Ex. Data Science & Machine Learning"><div class="skill-section-label">Skills dans cette section</div><div class="skill-rows"><div class="skill-row"><input type="text" placeholder="Skill 1"><div class="skill-order-buttons"><button type="button" title="Monter" onclick="moveSkillRow(this,-1)">↑</button><button type="button" title="Descendre" onclick="moveSkillRow(this,1)">↓</button></div><button class="skill-delete" type="button" title="Supprimer" onclick="this.parentElement.remove();refreshSkillOrderButtons(this.closest('.skill-rows'))">×</button></div></div><button type="button" class="skill-add" onclick="addSkillRow(this)">＋ Ajouter un skill</button>`;
+  wrap.appendChild(card);
+  refreshSkillOrderButtons(card.querySelector('.skill-rows'));
+  card.querySelector('.skill-category-name').focus();
+}
+function addSkillRow(btn){
+  const rows=btn.previousElementSibling;
+  const n=rows.children.length+1;
+  const row=document.createElement('div');
+  row.className='skill-row';
+  row.innerHTML=`<input type="text" placeholder="Skill ${n}"><div class="skill-order-buttons"><button type="button" title="Monter" onclick="moveSkillRow(this,-1)">↑</button><button type="button" title="Descendre" onclick="moveSkillRow(this,1)">↓</button></div><button class="skill-delete" type="button" title="Supprimer" onclick="this.parentElement.remove();refreshSkillOrderButtons(this.closest('.skill-rows'))">×</button>`;
+  rows.appendChild(row);
+  row.querySelector('input').focus();
+  refreshSkillOrderButtons(rows);
+}
+function refreshSkillOrderButtons(rows){
+  if(!rows)return;
+  const all=[...rows.querySelectorAll('.skill-row')];
+  all.forEach((row,i)=>{
+    const buttons=row.querySelectorAll('.skill-order-buttons button');
+    if(buttons[0])buttons[0].disabled=i===0;
+    if(buttons[1])buttons[1].disabled=i===all.length-1;
+  });
+}
+function moveSkillRow(button,direction){
+  const row=button.closest('.skill-row');
+  const rows=row?.parentElement;
+  if(!row||!rows)return;
+  const target=direction<0?row.previousElementSibling:row.nextElementSibling;
+  if(!target)return;
+  if(direction<0)rows.insertBefore(row,target);else rows.insertBefore(target,row);
+  refreshSkillOrderButtons(rows);
+}
+async function saveSkillsBuilder(){
+  const cards=[...document.querySelectorAll('#skillsCategories .skill-category-card')];
+  const msgBox=document.getElementById('skillsBulkMsg');
+  const items=[];
+  for(const card of cards){
+    const category=card.querySelector('.skill-category-name').value.trim();
+    const names=[...card.querySelectorAll('.skill-row input')].map(x=>x.value.trim()).filter(Boolean);
+    if(!category && !names.length) continue;
+    if(!category){msgBox.textContent='Chaque groupe doit avoir une catégorie.';msgBox.className='status err skill-save-status';return;}
+    if(!names.length){msgBox.textContent=`Ajoute au moins un skill dans « ${category} ».`;msgBox.className='status err skill-save-status';return;}
+    names.forEach(name=>items.push({name,category,sort_order:items.length+1}));
+  }
+  if(!items.length){msgBox.textContent='Ajoute au moins une catégorie et un skill.';msgBox.className='status err skill-save-status';return;}
+  const btn=document.querySelector('#skillsBuilder .skills-builder-actions .primary');
+  btn.disabled=true;btn.textContent='Enregistrement...';
+  const q=await db.from('skills').insert(items);
+  btn.disabled=false;btn.textContent='Enregistrer tous les skills';
+  if(q.error){msgBox.textContent=[q.error.message,q.error.code,q.error.details].filter(Boolean).join(' · ');msgBox.className='status err skill-save-status';return;}
+  msgBox.textContent=`✓ ${items.length} skill(s) ajouté(s) avec succès.`;msgBox.className='status ok skill-save-status';
+  document.getElementById('skillsCategories').innerHTML='';skillCategoryCount=0;
+  addSkillCategory();
+  await load('skills');
+}
+function openForm(t,id=null){let c=C[t],r=id?(rows[t]||[]).find(x=>x.id==id)||{}:{};let w=document.getElementById(t+'Form');w.innerHTML=`<div class="card"><form id="f_${t}" class="grid">${c.f.map(f=>input(f,r[f[0]])).join('')}<div class="full actions"><button type="button" class="btn" onclick="document.getElementById('${t}Form').innerHTML=''">Annuler</button><button class="btn primary">${id?'Enregistrer':'Ajouter'}</button></div></form><div id="m_${t}" class="status"></div></div>`;document.getElementById('f_'+t).onsubmit=async e=>{e.preventDefault();let v=vals(e.target,c.f);try{Object.assign(v,await uploadFiles(e.target,t))}catch(err){msg('m_'+t,err.message);return}let q=id?await db.from(t).update(v).eq('id',id):await db.from(t).insert(v);if(q.error)msg('m_'+t,[q.error.message,q.error.code,q.error.details].filter(Boolean).join(' · '));else{document.getElementById(t+'Form').innerHTML='';await load(t);msg('m_'+t,'Enregistré avec succès.',true)}};bindFilePreviews(w)}
+async function del(t,id){if(!confirm('Supprimer cet élément ?'))return;let q=await db.from(t).delete().eq('id',id);if(q.error)alert([q.error.message,q.error.code,q.error.details].filter(Boolean).join(' · '));else await load(t)}
+async function singleton(t,formId,msgId,fields){let q=await db.from(t).select('*').limit(1),r=q.data?.[0]||{},form=document.getElementById(formId);if(q.error){msg(msgId,q.error.message);return}form.dataset.id=r.id||'';form.innerHTML=fields.map(f=>input(f,r[f[0]])).join('')+'<div class="full actions"><button class="btn primary">Enregistrer</button></div>';bindFilePreviews(form)}
+async function saveSingleton(t,formId,msgId,fields){let f=document.getElementById(formId),v=vals(f,fields);try{Object.assign(v,await uploadFiles(f,t))}catch(err){msg(msgId,err.message);return}let id=f.dataset.id,q=id?await db.from(t).update(v).eq('id',id):await db.from(t).insert(v);if(q.error)msg(msgId,q.error.message);else{msg(msgId,'Enregistré avec succès.',true);singleton(t,formId,msgId,fields)}}
+async function all(){
+  for(let t in C){
+    try{await load(t)}catch(err){console.error('Unexpected error loading '+t,err)}
+  }
+  try{await singleton('profile','profileForm','profileMsg',PF)}catch(err){console.error('Profile initialization error:',err)}
+  try{await singleton('contact','contactForm','contactMsg',CF)}catch(err){console.error('Contact initialization error:',err)}
+}
+let appStarted=false;
+function app(u){
+  if(appStarted) return;
+  appStarted=true;
+  document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.s==='profile'));
+  document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id==='profile'));
+  $('login').classList.add('hidden');
+  $('app').classList.remove('hidden');
+  $('who').textContent=u?.email||'';
+  all().catch(err=>console.error('Admin initialization error:',err));
+}
+const $=id=>document.getElementById(id);
+
+// Navigation: un seul clic suffit pour changer de section.
+document.querySelectorAll('.nav').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const target=btn.dataset.s;
+    document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x===btn));
+    document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===target));
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+
+// Dark / light mode.
+const savedTheme=localStorage.getItem('admin-theme');
+if(savedTheme==='light') document.body.classList.add('light');
+const themeBtn=$('themeBtn');
+function updateThemeIcon(){
+  themeBtn.textContent=document.body.classList.contains('light')?'🌙':'☀️';
+}
+updateThemeIcon();
+themeBtn.addEventListener('click',()=>{
+  document.body.classList.toggle('light');
+  localStorage.setItem('admin-theme',document.body.classList.contains('light')?'light':'dark');
+  updateThemeIcon();
+});
+
+$('loginBtn').addEventListener('click',async()=>{
+  const emailValue=$('email').value.trim();
+  const passwordValue=$('password').value;
+  const btn=$('loginBtn');
+  if(!emailValue||!passwordValue){msg('loginMsg','Entre ton email et ton mot de passe.');return}
+  btn.disabled=true;
+  btn.textContent='Connexion...';
+  try{
+    const q=await db.auth.signInWithPassword({email:emailValue,password:passwordValue});
+    if(q.error){
+      console.error('Supabase login error:',q.error);
+      msg('loginMsg',q.error.message);
+      return;
+    }
+    if(!q.data?.session||!q.data?.user){
+      msg('loginMsg','Connexion réussie mais aucune session Supabase n’a été reçue.');
+      return;
+    }
+    app(q.data.user);
+  }catch(err){
+    console.error('Login exception:',err);
+    msg('loginMsg',err?.message||'Erreur inattendue pendant la connexion.');
+  }finally{
+    btn.disabled=false;
+    btn.textContent='Se connecter';
+  }
+});
+$('logout').addEventListener('click',async()=>{await db.auth.signOut();location.reload()});
+$('profileForm').onsubmit=e=>{e.preventDefault();saveSingleton('profile','profileForm','profileMsg',PF)};
+$('contactForm').onsubmit=e=>{e.preventDefault();saveSingleton('contact','contactForm','contactMsg',CF)};
+$('password').addEventListener('keydown',e=>{if(e.key==='Enter')$('loginBtn').click()});
+db.auth.getSession().then(({data,error})=>{
+  if(error){console.error('Session error:',error);return}
+  if(data?.session)app(data.session.user);
+});
+db.auth.onAuthStateChange((event,session)=>{
+  console.log('Auth event:',event);
+  if(session && $('app').classList.contains('hidden')) app(session.user);
+});
+</script></body></html>
